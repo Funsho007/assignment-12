@@ -32,3 +32,4 @@ export default {
 docker image build -t olayinka_oke_coding_assignment12:latest .
 
 docker run -dp 8083:6006 --name olayinka_oke_coding_assignment12 olayinka_oke_coding_assignment12:latest
+
