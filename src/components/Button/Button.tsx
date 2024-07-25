@@ -32,3 +32,8 @@ const Button: React.FC<ButtonProps> = ({ disabled, label, visible = true, disabl
 };
 
 export default Button;
+
+export function sum(a: number, b: number) {
+    return a + b;
+   }
+    
