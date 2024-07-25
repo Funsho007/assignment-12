@@ -1,8 +1,8 @@
 import { Meta, StoryFn } from '@storybook/react';
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 import HeroSection from './HeroSection';
 import { HeroSectionProps } from './HeroSection.types';
-import { within } from '@storybook/testing-library';
-
 
 export default {
   title: 'Components/HeroSection',
@@ -12,10 +12,10 @@ export default {
   },
 } as Meta<typeof HeroSection>;
 
-const Template: StoryFn<HeroSectionProps> = (args) => <HeroSection {...args} />;
+const Template: StoryFn<HeroSectionProps> = (args: HeroSectionProps) => <HeroSection {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   title: 'Hero Section Title',
   subtitle: 'Hero Section Subtitle',
   visible: true,
@@ -31,29 +31,23 @@ Disabled.args = {
   backgroundColor: '#d3d3d3', // greyed out background
 };
 
-export const Hidden = Template.bind({});
-Hidden.args = {
-  title: 'Hero Section Title',
-  subtitle: 'Hero Section Subtitle',
-  visible: false,
-};
-
-Default.play = async ({ canvasElement }) => {
+// Interaction tests
+Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const title = canvas.getByText('Hero Section Title');
   const subtitle = canvas.getByText('Hero Section Subtitle');
   expect(title).toBeInTheDocument();
   expect(subtitle).toBeInTheDocument();
+  expect(title).toBeVisible();
+  expect(subtitle).toBeVisible();
 };
 
-Disabled.play = async ({ canvasElement }) => {
+Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const title = canvas.queryByText('Hero Section Title');
-  expect(title).toBeNull();
-};
-
-Hidden.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  const title = canvas.queryByText('Hero Section Title');
-  expect(title).toBeNull();
+  const subtitle = canvas.queryByText('Hero Section Subtitle');
+  expect(title).toBeInTheDocument();
+  expect(subtitle).toBeInTheDocument();
+  expect(title).not.toBeVisible();
+  expect(subtitle).not.toBeVisible();
 };

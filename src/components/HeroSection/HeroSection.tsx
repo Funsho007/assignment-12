@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { HeroSectionProps } from './HeroSection.types';
 
-const Section = styled.section<{ backgroundColor?: string; $disabled?: boolean }>`
+const Section = styled.section<{ $backgroundColor?: string; $disabled?: boolean }>`
   display: ${({ $disabled }) => ($disabled ? 'none' : 'block')};
-  background-color: ${({ backgroundColor }) => backgroundColor || '#ffffff'};
+  background-color: ${({ $backgroundColor }) => $backgroundColor || '#ffffff'};
   padding: 20px;
   text-align: center;
   cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
@@ -27,7 +27,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitle, backgroundCo
   }
 
   return (
-    <Section backgroundColor={backgroundColor} $disabled={disabled}>
+    <Section $backgroundColor={backgroundColor} $disabled={disabled}>
       <Title>{title}</Title>
       <Subtitle>{subtitle}</Subtitle>
     </Section>
