@@ -1,8 +1,8 @@
-// HeroImage.types.ts
 export interface HeroImageProps {
-    src: string;
-    alt: string;
-    disabled?: boolean;
-    visible?: boolean;
-    backgroundColor?: string;
-  }
+  src?: string;
+  alt?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  visible?: boolean;
+  backgroundColor?: string;
+}

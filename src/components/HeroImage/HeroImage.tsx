@@ -6,8 +6,8 @@ export interface HeroImageProps {
   alt?: string;
   placeholder?: string;
   disabled?: boolean;
-  visible?: boolean; // Add visible prop
-  backgroundColor?: string; // Add backgroundColor prop
+  visible?: boolean;
+  backgroundColor?: string;
 }
 
 const ImageContainer = styled.div<{ $isVisible?: boolean }>`
@@ -21,13 +21,13 @@ const StyledImage = styled.img<{ backgroundColor?: string }>`
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  background-color: ${(props) => props.backgroundColor}; // Apply background color here
+  background-color: ${(props) => props.backgroundColor};
 `;
 
 const Placeholder = styled.div<{ backgroundColor?: string }>`
   width: 100%;
   height: 300px;
-  background-color: ${(props) => props.backgroundColor || '#e0e0e0'}; // Apply background color here
+  background-color: ${(props) => props.backgroundColor || '#e0e0e0'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,22 +35,6 @@ const Placeholder = styled.div<{ backgroundColor?: string }>`
   color: #757575;
   font-size: 18px;
 `;
-
-// const HeroImage: React.FC<HeroImageProps> = ({ src, alt = 'Hero Image', placeholder = 'No Image Available', disabled = false, visible = true, backgroundColor }) => {
-//   if (disabled) {
-//     return null;
-//   }
-
-//   return (
-//     <ImageContainer $isVisible={!disabled && visible}>
-//       {src ? (
-//         <StyledImage src={src} alt={alt} backgroundColor={backgroundColor} />
-//       ) : (
-//         <Placeholder backgroundColor={backgroundColor}>{placeholder}</Placeholder>
-//       )}
-//     </ImageContainer>
-//   );
-// };
 
 const HeroImage: React.FC<HeroImageProps> = ({ 
   src, 
@@ -74,6 +58,5 @@ const HeroImage: React.FC<HeroImageProps> = ({
     </ImageContainer>
   );
 };
-
 
 export default HeroImage;
