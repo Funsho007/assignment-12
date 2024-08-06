@@ -42,7 +42,7 @@ jobs:
 #run-name: ${{ github.actor }} is Building UC Component Library - ${{ github.event.head_commit.message }}
 
 # Set up triggers for when the pipeline should run
-on: [push, pull_request]
+#on: [push, pull_request]
 
 # Job definitions
 jobs:
