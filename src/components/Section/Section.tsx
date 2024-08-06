@@ -24,7 +24,6 @@ const Section: React.FC<SectionProps> = ({
   visible,
   disabled,
 }) => {
-  const sectionProps = { backgroundcolor, color, visible, disabled };
 
   return (
     <StyledSection title={title} content={content} backgroundcolor={backgroundcolor} color={color} visible={visible} disabled={disabled}>
