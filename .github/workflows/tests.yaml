@@ -1,45 +1,8 @@
 
 
 # Workflow setup
-name: 'UC Component Library Test Suite'
-run-name: ${{ github.actor }} is Building UC Component Library - ${{ github.event.head_commit.message }}
-
-# Set up triggers for when the pipeline should run
-on: [push, pull_request]
-
-# Job definitions
-jobs:
-  build-component-library:
-    name: Running UC Component Library Test Suite
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Node Env
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Run Prettier
-        run: npx prettier --check "**/*.{js,jsx,ts,tsx,mdx,css}"
-        continue-on-error: false
-
-      - name: Run ESLint
-        run: npx eslint . --config eslint.config.mjs
-        continue-on-error: false
-
-      - name: Run Test Suite
-      
-
-# Workflow setup
 #name: 'UC Component Library Test Suite'
-#run-name: ${{ github.actor }} is Building UC Component Library - ${{ github.event.head_commit.message }}
+run-name: ${{ github.actor }} is Building UC Component Library - ${{ github.event.head_commit.message }}
 
 # Set up triggers for when the pipeline should run
 #on: [push, pull_request]
@@ -73,5 +36,4 @@ jobs:
 
       - name: Run Test Suite
       
- 
  
