@@ -1,4 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import HeroImage from './HeroImage';
 import { HeroImageProps } from './HeroImage.types';
 
@@ -17,6 +18,11 @@ Primary.args = {
   src: 'path/to/image.jpg',
   alt: 'Primary Image',
   visible: true,
+};
+Primary.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const image = canvas.getByAltText('Primary Image');
+  await userEvent.click(image);
 };
 
 export const Placeholder = Template.bind({});
@@ -42,4 +48,9 @@ Hidden.args = {
   alt: 'Hidden Image',
   visible: false,
   backgroundColor: '#ff0000', // Example of changing background color
+};
+Hidden.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const image = canvas.getByAltText('Hidden Image');
+  await userEvent.click(image);
 };

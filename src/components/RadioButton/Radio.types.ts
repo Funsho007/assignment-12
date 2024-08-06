@@ -1,9 +1,6 @@
-// src/components/social/RadioButton/RadioButton.types.ts
-
-export interface RadioButtonProps {
-  label: string;
-  state: 'primary' | 'disabled';
-  visible: boolean;
+export interface ButtonProps {
+  disabled?: boolean;
+  label?: string;
+  visible?: boolean;
   backgroundColor?: string;
-  onClick?: () => void;
 }

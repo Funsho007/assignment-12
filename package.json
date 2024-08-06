@@ -13,6 +13,7 @@
     "test": "npm run test:jest && npm run test:storybook",
     "test:jest": "jest",
     "test:storybook": "test-storybook"
+   
   },
   "jest": {
     "transform": {
