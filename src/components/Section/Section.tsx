@@ -4,7 +4,7 @@ import { SectionProps } from './Section.types';
 
 const StyledSection = styled.section<SectionProps>`
   padding: 20px;
-  background-color: ${({ backgroundColor }) => backgroundColor || 'white'};
+  background-color: ${({ backgroundcolor }) => backgroundcolor || 'white'};
   color: ${({ color }) => color || 'black'};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
@@ -19,15 +19,15 @@ const StyledSection = styled.section<SectionProps>`
 const Section: React.FC<SectionProps> = ({
   title,
   content,
-  backgroundColor,
+  backgroundcolor,
   color,
   visible,
   disabled,
 }) => {
-  const sectionProps = { backgroundColor, color, visible, disabled };
+  const sectionProps = { backgroundcolor, color, visible, disabled };
 
   return (
-    <StyledSection title={title} content={content} backgroundColor={backgroundColor} color={color} visible={visible} disabled={disabled}>
+    <StyledSection title={title} content={content} backgroundcolor={backgroundcolor} color={color} visible={visible} disabled={disabled}>
       <h1>{title}</h1>
       <p>{content}</p>
     </StyledSection>
