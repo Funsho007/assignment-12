@@ -12,7 +12,8 @@
     "build-storybook": "storybook build",
     "test": "npm run test:jest && npm run test:storybook",
     "test:jest": "jest",
-    "test:storybook": "test-storybook"
+    "test:storybook": "test-storybook",
+     "ci:test": "npm run test -- --ci"
    
   },
   "jest": {
