@@ -38,8 +38,8 @@ jobs:
       
 
 # Workflow setup
-name: 'UC Component Library Test Suite'
-run-name: ${{ github.actor }} is Building UC Component Library - ${{ github.event.head_commit.message }}
+#name: 'UC Component Library Test Suite'
+#run-name: ${{ github.actor }} is Building UC Component Library - ${{ github.event.head_commit.message }}
 
 # Set up triggers for when the pipeline should run
 on: [push, pull_request]
