@@ -6,18 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     env:
       COMPOSE_FILE: dockerfile.ci
- 
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
- 
+
       - name: Build docker images
         run: docker build -t main -f $COMPOSE_FILE .
 
-        name: Start Storybook
-       # run: |
-         # npm run storybook &
-          #sleep 20 # Adjust the sleep time as needed to ensure Storybook is fully started
- 
+      - name: Start Storybook
+        run: |
+          npm run storybook &
+          sleep 20 # Adjust the sleep time as needed to ensure Storybook is fully started
+
       - name: Run tests
         run: docker run main
