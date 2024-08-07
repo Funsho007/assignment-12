@@ -12,7 +12,7 @@ describe('Section Component', () => {
     const props: SectionProps = {
       title: 'Test Section Title',
       content: 'This is the section content.',
-      backgroundcolor: '#ffffff',
+      backgroundColor: '#ffffff', // Corrected property name
       color: '#000000',
       visible: true,
       disabled: false,
