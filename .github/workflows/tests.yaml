@@ -1,23 +1,25 @@
-name: Run Tests
-on: push
+name: CI
+
+on: [push, pull_request]
+
 jobs:
-  test:
-    name: Run Test suite
+  build:
     runs-on: ubuntu-latest
-    env:
-      COMPOSE_FILE: dockerfile.ci
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: Build docker images
-        run: docker build -t main -f $COMPOSE_FILE .
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
 
-      - name: Start Storybook
-        run: |
-          npm run storybook &
-          sleep 20 # Adjust the sleep time as needed to ensure Storybook is fully started
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run tests
-        run: docker run main
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Jest tests
+        run: npm test
