@@ -15,9 +15,9 @@ jobs:
         run: docker build -t main -f $COMPOSE_FILE .
 
         name: Start Storybook
-        run: |
-          npm run storybook &
-          sleep 20 # Adjust the sleep time as needed to ensure Storybook is fully started
+       # run: |
+         # npm run storybook &
+          #sleep 20 # Adjust the sleep time as needed to ensure Storybook is fully started
  
       - name: Run tests
         run: docker run main
