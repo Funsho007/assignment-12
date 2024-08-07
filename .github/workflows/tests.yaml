@@ -27,7 +27,7 @@ jobs:
           docker buildx build \
             --cache-from=type=local,src=/tmp/.buildx-cache \
             --cache-to=type=local,dest=/tmp/.buildx-cache,mode=max \
-            --tag main \
+            --tag main:latest \ # Ensure the image is tagged as main:latest
             -f $COMPOSE_FILE \
             .
 
@@ -37,5 +37,5 @@ jobs:
           sleep 20 # Adjust the sleep time as needed to ensure Storybook is fully started
 
       - name: Run tests
-        run: docker run main
+        run: docker run main:latest # Use the correct tag
         continue-on-error: false
