@@ -1,21 +1,25 @@
-name: Run Tests
+name: CI
 
-on: push
+on: [push, pull_request]
 
 jobs:
-  test:
-    name: Run Test suite
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          fetch-depth: 0 # Ensures full history and all files are checked out
+          node-version: "18"
 
-      - name: Build docker images
-        run: docker build -t main -f Dockerfile.ci .
-        working-directory: . # Ensures the command runs in the root directory
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run tests
-        run: docker run main
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Jest tests
+        run: npm test
