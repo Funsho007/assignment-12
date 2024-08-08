@@ -13,7 +13,7 @@
     "test": "npm run test:jest && npm run test:storybook",
     "test:jest": "jest",
     "test:storybook": "test-storybook",
-     "ci:test": "npm run test -- --ci"
+     "ci:test": "npm run storybook & sleep 30 && npm run test"
    
   },
   "jest": {
@@ -26,7 +26,11 @@
     "modulePathIgnorePatterns": [
       "node_modules",
       "jest-test-results.json"
-    ]
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "testEnvironment": "jest-environment-jsdom"
   },
   "dependencies": {
     "react": "^18.2.0",
