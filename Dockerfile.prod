@@ -1,12 +1,7 @@
 FROM node:lts-iron
+WORKDIR /react-docker-example-test-docker/
+COPY package.json /react-docker-example-test-docker/
  
-WORKDIR /olayinka_oke_ui_garden/
- 
-COPY public/ /olayinka_oke_ui_garden/public
-COPY src/ /olayinka_oke_ui_garden/src
-COPY package.json /olayinka_oke_ui_garden/
-COPY . /olayinka_oke_ui_garden
- 
+COPY . /react-docker-example-test-docker/
 RUN npm install
- 
 CMD ["npm", "run", "storybook"]
