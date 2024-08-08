@@ -10,9 +10,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensures full history and all files are checked out
 
       - name: Build docker images
         run: docker build -t main -f Dockerfile.ci .
+        working-directory: . # Ensures the command runs in the root directory
 
       - name: Run tests
         run: docker run main
