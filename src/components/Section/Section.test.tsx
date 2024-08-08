@@ -3,6 +3,7 @@
  */
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import React from 'react'; // Ensure React is imported
 import Section from './Section';
 import { SectionProps } from './Section.types';
 
